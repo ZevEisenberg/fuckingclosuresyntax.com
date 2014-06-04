@@ -3,8 +3,8 @@
   <title>How Do I Declare a Closure in Swift?</title>
   <style>
     body {
-      background-color: #002b36;
-      color: #839496;
+      background-color: #292a35;
+      color: #fff;
       font-family: Lucida Grande, sans-serif;
       font-size: 20px;
       padding: 40px;
@@ -12,7 +12,7 @@
     }
 
     strong {
-      color: #268bd2;
+      color: #56bd4d;
     }
 
     h1 {
@@ -26,11 +26,15 @@
     }
 
     .return {
-      color: #2aa198;
+      color: #ba246c;
     }
 
     .name {
-      color: #BC8800;
+      color: #95cc6b;
+    }
+
+    .func {
+      color: #2dafc9;
     }
 
     .parameter-types, .parameters {
@@ -109,21 +113,54 @@
   <div>
     <h2>As a <strong>var</strong>:</h2>
     <code>
-      var <span class='name'>closureName</span>: (<span class='parameter-types'>parameterTypes</span>) -> (<span class='return'>returnType</span>)
-    </code>
-  </div>
-
-  <div>
-    <h2>As a <strong>function parameter</strong>:</h2>
-    <code>
-      func name(<span class='name'>closureName</span>: (<span class='parameter-types'>parameterTypes</span>) -> (<span class='return'>returnType</span>))
+      <span class='return'>var</span> closureName: (<span class='parameter-types'>parameterTypes</span>) -> (<span class='return'>returnType</span>)
     </code>
   </div>
 
   <div>
     <h2>As an <strong>argument to a function call</strong>:</h2>
     <code>
-      func({(<span class='parameter-types'>parameterTypes</span>) -> (<span class='return'>returnType</span>) in statements})
+      <span class='name'>func</span>({(<span class='parameter-types'>parameterTypes</span>) -> (<span class='return'>returnType</span>) in statements})
+    </code>
+  </div>
+
+  <div>
+    <h2>As a <strong>type alias</strong>:</h2>
+    <code>
+      <span class='return'>typealias</span> closureName = (<span class='parameter-types'>parameterTypes</span>) -> (<span class='return'>returnType</span>)
+    </code>
+  </div>
+
+
+  <div>
+    <h2>As a <strong>function parameter</strong>:</h2>
+    <code>
+      <span class='name'>array</span>.<span class='func'>sort</span>({ (item1: <span class='func'>Int</span>, item2: <span class='func'>Int</span>) -> Bool <span class='return'>in return</span> item1 < item2 })
+    </code>
+
+    <h2>As a <strong>function parameter with implied types</strong>:</h2>
+    <code>
+      <span class='name'>array</span>.<span class='func'>sort</span>({ (item1, item2) -> Bool <span class='return'>in return</span> item1 < item2 })
+    </code>
+
+    <h2>As a <strong>function parameter with implied return type</strong>:</h2>
+    <code>
+      <span class='name'>array</span>.<span class='func'>sort</span>({ (item1, item2) <span class='return'>in return</span> item1 < item2 })
+    </code>
+
+    <h2>As the <strong>last function parameter</strong>:</h2>
+    <code>
+      <span class='name'>array</span>.<span class='func'>sort</span> { (item1, item2) <span class='return'>in return</span> item1 < item2 }
+    </code>
+
+    <h2>As the last parameter, <strong>referred to by numbers</strong>:</h2>
+    <code>
+      <span class='name'>array</span>.<span class='func'>sort</span> { <span class='return'>return</span> $0 < $1 }
+    </code>
+
+    <h2>As the last parameter, <strong>with an implied return value</strong>:</h2>
+    <code>
+      <span class='name'>array</span>.<span class='func'>sort</span> { $0 < $1 }
     </code>
   </div>
 
